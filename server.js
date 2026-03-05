@@ -9,20 +9,23 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-// routes
-app.use("/contacts", require("./routes/contacts"));
-
-// test route
+// Home route (for testing deployment)
 app.get("/", (req, res) => {
-  res.send("Server is running...");
+  res.send("CSE341 Web Services API is running");
 });
 
+// Routes
+app.use("/contacts", require("./routes/contacts"));
+
+// Initialize database
 mongodb.initDb((err) => {
   if (err) {
     console.error("Database connection failed:", err);
   } else {
+    console.log("Database connected");
+
     app.listen(port, () => {
-      console.log(`Database connected and server running on port ${port}`);
+      console.log(`Server running on port ${port}`);
     });
   }
 });
