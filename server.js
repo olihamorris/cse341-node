@@ -1,29 +1,24 @@
 require("dotenv").config();
-
 const express = require("express");
-const mongodb = require("./db/connect");
-
 const app = express();
 
-app.use(express.json());
+const mongodb = require("./db/connect");
+
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 const port = process.env.PORT || 3000;
 
-// Home route (for testing deployment)
-app.get("/", (req, res) => {
-  res.send("CSE341 Web Services API is running");
-});
+app.use(express.json());
 
-// Routes
 app.use("/contacts", require("./routes/contacts"));
 
-// Initialize database
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 mongodb.initDb((err) => {
   if (err) {
-    console.error("Database connection failed:", err);
+    console.log(err);
   } else {
-    console.log("Database connected");
-
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
