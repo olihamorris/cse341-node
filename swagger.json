@@ -5,15 +5,15 @@
     "description": "CSE341 Contacts API with CRUD operations",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-node-qjp4.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/contacts/": {
       "get": {
-        "description": "",
+        "description": "Get all contacts",
         "produces": [
           "application/json"
         ],
@@ -27,28 +27,34 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a new contact",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "John"
                 },
                 "lastName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Doe"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "john@email.com"
                 },
                 "favoriteColor": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "blue"
                 },
                 "birthday": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "1995-06-10"
                 }
               }
             }
@@ -66,7 +72,7 @@
     },
     "/contacts/{id}": {
       "get": {
-        "description": "",
+        "description": "Get a single contact",
         "produces": [
           "application/json"
         ],
@@ -88,7 +94,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a contact",
         "parameters": [
           {
             "name": "id",
@@ -99,23 +105,29 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "John"
                 },
                 "lastName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Doe"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "john@email.com"
                 },
                 "favoriteColor": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "green"
                 },
                 "birthday": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "1995-06-10"
                 }
               }
             }
@@ -131,7 +143,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete a contact",
         "parameters": [
           {
             "name": "id",
