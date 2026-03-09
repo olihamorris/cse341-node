@@ -2,6 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+app.get("/", (req, res) => {
+  res.send("CSE341 Contacts API");
+});
+
 const mongodb = require("./db/connect");
 
 const swaggerUi = require("swagger-ui-express");
